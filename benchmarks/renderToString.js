@@ -45,6 +45,9 @@ const data = {
 
 const suite = new Benchmark.Suite;
 
+console.log('| package                       |    ops/sec    |        runs sampled |')
+console.log('| ----------------------------- | :-----------: | ------------------: |')
+
 suite
   .add(`React(${reactPkg.version})#renderToString`, function() {
     ReactDOMServer.renderToString(React.createElement(ReactApp, data));
@@ -82,7 +85,13 @@ suite
     xtplApp.render(data);
   })
   .on('cycle', function(event) {
-    console.log(String(event.target));
+    var pm = '\xb1';
+    var hz = event.target.hz;
+    var size = event.target.stats.sample.length;
+    var name = event.target.name || (_.isNaN(id) ? id : '<Test #' + id + '>');
+    var ops = formatNumber(hz.toFixed(hz < 100 ? 2 : 0)) + ' ' + pm + event.target.stats.rme.toFixed(2);
+    var runs = '% (' + size + ' run' + (size == 1 ? '' : 's') + ' sampled)';
+    console.log(`| ${name} | ${ops} | ${runs} |`)
     // const t = event.target.stats.mean;
     // console.log('mean:' + (t*1000000).toFixed(6) + 'μs');
   })
@@ -104,4 +113,18 @@ function getOSInformation() {
     'system memory': os.totalmem() / ( 1024 * 1024 * 1024 ) + 'GB',
     'node version': process.version
   };
+}
+
+/**
+ * Converts a number to a more readable comma-separated string representation.
+ *
+ * @static
+ * @memberOf Benchmark
+ * @param {number} number The number to convert.
+ * @returns {string} The more readable string representation.
+ */
+function formatNumber(number) {
+  number = String(number).split('.');
+  return number[0].replace(/(?=(?:\d{3})+$)(?!\b)/g, ',') +
+    (number[1] ? '.' + number[1] : '');
 }

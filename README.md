@@ -18,15 +18,18 @@ npm run benchmark
 
 ## Result
 
-> https://github.com/raxjs/server-side-rendering-comparison/commit/04fdfec8aa8626312ad3e2c0c6a57c6f735ad6de/checks?check_suite_id=401266841
+> <https://github.com/raxjs/server-side-rendering-comparison/commit/04fdfec8aa8626312ad3e2c0c6a57c6f735ad6de/checks?check_suite_id=401266841>
 
 ```bash
-React(16.12.0)#renderToString x 1,178 ops/sec ±1.23% (85 runs sampled)
-Rax(1.1.1)#renderToString x 6,047 ops/sec ±1.73% (82 runs sampled)
-Inferno(7.3.3)#renderToString x 3,335 ops/sec ±1.77% (82 runs sampled)
-Preact(10.2.1)#renderToString x 1,005 ops/sec ±1.10% (86 runs sampled)
-Marko(4.18.33)#renderToString x 10,291 ops/sec ±1.64% (86 runs sampled)
-xtemplate(4.7.2)#render x 20,600 ops/sec ±2.89% (84 runs sampled)
+| package                       |    ops/sec    |        runs sampled |
+| ----------------------------- | :-----------: | ------------------: |
+| React(17.0.1)#renderToString | 1,780 ±1.16 | % (86 runs sampled) |
+| Rax(1.1.4)#renderToString | 9,069 ±0.91 | % (86 runs sampled) |
+| Inferno(7.4.6)#renderToString | 5,256 ±2.00 | % (85 runs sampled) |
+| Preact(10.5.7)#renderToString | 1,309 ±0.71 | % (86 runs sampled) |
+| Vue(2.6.12)#renderToString | 1,123 ±1.69 | % (79 runs sampled) |
+| Marko(4.23.9)#renderToString | 14,579 ±0.80 | % (86 runs sampled) |
+| xtemplate(4.7.2)#render | 27,178 ±4.30 | % (84 runs sampled) |
 
 The benchmark was run on:
    PLATFORM: linux 5.0.0-1027-azure
@@ -35,5 +38,14 @@ The benchmark was run on:
    NODE VERSION: v10.18.1
 ```
 
-- Result run by [Github Actions](https://github.com/raxjs/server-side-rendering-comparison/actions)
+| package                       |   ops/sec    |        runs sampled |
+| ----------------------------- | :----------: | ------------------: |
+| React(17.0.1)#renderToString  | 1,780 ±1.16  | % (86 runs sampled) |
+| Rax(1.1.4)#renderToString     | 9,069 ±0.91  | % (86 runs sampled) |
+| Inferno(7.4.6)#renderToString | 5,256 ±2.00  | % (85 runs sampled) |
+| Preact(10.5.7)#renderToString | 1,309 ±0.71  | % (86 runs sampled) |
+| Vue(2.6.12)#renderToString    | 1,123 ±1.69  | % (79 runs sampled) |
+| Marko(4.23.9)#renderToString  | 14,579 ±0.80 | % (86 runs sampled) |
+| xtemplate(4.7.2)#render       | 27,178 ±4.30 | % (84 runs sampled) |
 
+- Result run by [Github Actions](https://github.com/raxjs/server-side-rendering-comparison/actions)
